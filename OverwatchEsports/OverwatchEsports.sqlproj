@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Database</Name>
+    <Name>OverwatchEsports</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{1a592500-cfe9-4276-8c2f-ab48f8473711}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <ProjectGuid>{ae42ab08-b2d8-4633-acd0-7895432241ad}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>Database</RootNamespace>
-    <AssemblyName>Database</AssemblyName>
+    <RootNamespace>OverwatchEsports</RootNamespace>
+    <AssemblyName>OverwatchEsports</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -57,5 +57,18 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Player.sql" />
+    <Build Include="Tables\Tournament.sql" />
+    <Build Include="Tables\Match.sql" />
+    <Build Include="Tables\Game.sql" />
+    <Build Include="Tables\Map.sql" />
+    <Build Include="Tables\Team.sql" />
+    <Build Include="Tables\TeamTournamentRegister.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="OverwatchEsports.refactorlog" />
   </ItemGroup>
 </Project>
