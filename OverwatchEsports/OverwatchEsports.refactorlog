@@ -91,4 +91,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="TeamId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="38e547c7-3e98-4c72-b628-c93517c9b417" ChangeDateTime="09/05/2019 08:42:13">
+    <Property Name="ElementName" Value="[dbo].[Game].[length]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Game]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Length" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f4ef3585-a64a-41ea-82a6-51b46ac39792" ChangeDateTime="09/05/2019 08:42:17">
+    <Property Name="ElementName" Value="[dbo].[Game].[position]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Game]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Position" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5da5f0bf-108f-49d8-82b9-9aa35a4c3a57" ChangeDateTime="09/05/2019 08:42:19">
+    <Property Name="ElementName" Value="[dbo].[Game].[status]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Game]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Status" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3daa14b5-842b-4e5a-afaa-b7b3e8a53edd" ChangeDateTime="09/05/2019 08:42:29">
+    <Property Name="ElementName" Value="[dbo].[Map].[image_url]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Map]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Image_url" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="48db294c-bf51-4e8f-85fc-6ebb570d1cfa" ChangeDateTime="09/05/2019 08:42:44">
+    <Property Name="ElementName" Value="[dbo].[Team].[image_url]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Team]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Image_url" />
+  </Operation>
 </Operations>

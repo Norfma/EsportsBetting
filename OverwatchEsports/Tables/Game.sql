@@ -8,9 +8,9 @@
     [Forfeit] BIT NOT NULL DEFAULT 1, 
     [Finished] BIT NOT NULL DEFAULT 1, 
     [MapId] INT NOT NULL, 
-    [length] INT NULL, 
-    [position] INT NOT NULL, 
-    [status] NVARCHAR(50) NOT NULL
+    [Length] INT NULL, 
+    [Position] INT NOT NULL, 
+    [Status] NVARCHAR(50) NOT NULL
 , 
     CONSTRAINT [FK_Game_ToMap] FOREIGN KEY (MapId) REFERENCES Map(Id), 
     CONSTRAINT [FK_Game_ToMatch] FOREIGN KEY (MatchId) REFERENCES [Match](Id), 
