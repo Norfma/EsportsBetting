@@ -140,4 +140,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ImageURL" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="c736bda6-bad7-4cd3-886e-b1c305c42b73" ChangeDateTime="09/05/2019 09:00:04">
+    <Property Name="ElementName" Value="[dbo].[Tournament].[image_url]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tournament]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImageURL" />
+  </Operation>
 </Operations>
