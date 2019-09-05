@@ -3,5 +3,5 @@
 	[Id] INT NOT NULL PRIMARY KEY, 
     [Name] NVARCHAR(50) NOT NULL, 
     [GameMode] NVARCHAR(50) NOT NULL, 
-    [Image_url] NVARCHAR(MAX) NOT NULL
+    [ImageURL] NVARCHAR(MAX) NOT NULL
 )
