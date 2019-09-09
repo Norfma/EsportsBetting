@@ -58,6 +58,8 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="StoredProcedures" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Player.sql" />
@@ -67,6 +69,15 @@
     <Build Include="Tables\Map.sql" />
     <Build Include="Tables\Team.sql" />
     <Build Include="Tables\TeamTournamentRegister.sql" />
+    <Build Include="StoredProcedures\UpdatePlayer.sql" />
+    <Build Include="Views\v_Player.sql" />
+    <Build Include="Views\v_Game.sql" />
+    <Build Include="Views\v_TournamentTeam.sql" />
+    <Build Include="Views\v_Map.sql" />
+    <Build Include="Views\v_Match.sql" />
+    <Build Include="Views\v_Team.sql" />
+    <Build Include="Views\v_Tournament.sql" />
+    <Build Include="StoredProcedures\UpdateTeam.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OverwatchEsports.refactorlog" />
