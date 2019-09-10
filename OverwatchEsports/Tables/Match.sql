@@ -9,7 +9,7 @@
     [Draw] BIT NOT NULL DEFAULT 1, 
     [Forfeit] BIT NOT NULL DEFAULT 1, 
     [MatchType] NVARCHAR(50) NULL DEFAULT 'best_of', 
-    [NumberOfGames] NCHAR(10) NULL, 
+    [NumberOfGames] int NULL, 
     CONSTRAINT [FK_Match_ToTeam1] FOREIGN KEY (Team1Id) REFERENCES Team(Id),
     CONSTRAINT [FK_Match_ToTeam2] FOREIGN KEY (Team2Id) REFERENCES Team(Id),
     CONSTRAINT [FK_Match_ToTournament] FOREIGN KEY (TournamentId) REFERENCES Tournament(Id)

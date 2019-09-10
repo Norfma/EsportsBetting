@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Game]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
-    [MatchId] INT NULL, 
+    [MatchId] INT NULL , 
     [WinnerId] INT NULL, 
-    [BeginAt] DATETIME NULL, 
-    [EndAt] DATETIME NULL, 
+    [BeginAt] DATETIME2 NULL, 
+    [EndAt] DATETIME2 NULL, 
     [Forfeit] BIT NOT NULL DEFAULT 1, 
     [Finished] BIT NOT NULL DEFAULT 1, 
     [MapId] INT NOT NULL, 
