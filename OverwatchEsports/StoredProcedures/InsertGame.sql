@@ -11,6 +11,8 @@
     @Position INT, 
     @Status NVARCHAR(50)
 AS
+begin transaction
+set transaction isolation level read committed
 	if (not Exists(Select * from Game where Id = @Id))
 		begin
 			INSERT INTO Game(Id, MatchId, WinnerId, BeginAt, EndAt, Forfeit, Finished, MapId, [Length], Position, [Status])
@@ -19,5 +21,5 @@ AS
 	else
 		begin
 			exec UpdateGame @Id, @WinnerId, @EndAt, @Forfeit, @Finished, @MapId, @Length, @Status
-		end
+		end		
 RETURN 0

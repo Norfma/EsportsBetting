@@ -8,6 +8,8 @@
     @EndDate DATETIME2 NULL, 
     @Prizepool INT NULL
 AS
+begin transaction
+set transaction isolation level read committed
 	if (not Exists(Select * from Tournament where Id = @Id))
 		begin
 			INSERT INTO Tournament 

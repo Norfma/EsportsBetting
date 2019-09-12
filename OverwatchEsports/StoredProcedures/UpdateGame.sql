@@ -8,6 +8,8 @@
 	@Length int null,
 	@Status nvarchar(50)
 AS
+begin transaction
+set transaction isolation level read committeds
 	Update Game set WinnerId = @WinnerId, EndAt = @EndAt, Forfeit = @Forfeit, Finished = @Finished, 
 	MapId = @MapId, Length = @Length, Status = @Status where Id = @Id
 RETURN 0

@@ -4,6 +4,8 @@
 	@Acronym nvarchar(10),
 	@ImageURL nvarchar(max) null
 AS
+begin transaction
+set transaction isolation level read committed
 	if (not Exists(Select * from Team where Id = @Id))
 		begin
 			INSERT INTO Team 

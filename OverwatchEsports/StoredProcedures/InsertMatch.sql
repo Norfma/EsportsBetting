@@ -10,6 +10,8 @@
     @MatchType NVARCHAR(50) NULL, 
     @NumberOfGames int NULL 
 AS
+begin transaction
+set transaction isolation level read committed
 	if (not Exists(Select * from [Match] where Id = @Id))
 		begin
 			INSERT INTO [Match] 

@@ -93,4 +93,7 @@
   <ItemGroup>
     <RefactorLog Include="OverwatchEsports.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="CommittedSnapshot.sql" />
+  </ItemGroup>
 </Project>
