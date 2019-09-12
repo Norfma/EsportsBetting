@@ -21,6 +21,6 @@ AS
 		else
 			begin
 				exec UpdateGame @Id, @WinnerId, @EndAt, @Forfeit, @Finished, @MapId, @Length, @Status
-			end		.
+			end	
 	commit
 RETURN 0
