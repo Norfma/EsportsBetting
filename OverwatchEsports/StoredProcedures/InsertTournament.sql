@@ -4,8 +4,8 @@
     @SeriesFullName NVARCHAR(50), 
     @Name NVARCHAR(50), 
     @ImageURL NVARCHAR(MAX) NULL, 
-    @BeginDate DATETIME2 NULL, 
-    @EndDate DATETIME2 NULL, 
+    @BeginAt DATETIME2 NULL, 
+    @EndAt DATETIME2 NULL, 
     @Prizepool INT NULL
 AS
 	begin transaction
@@ -13,11 +13,11 @@ AS
 		if (not Exists(Select * from Tournament where Id = @Id))
 			begin
 				INSERT INTO Tournament 
-				VALUES(@Id, @LeagueName, @SeriesFullName, @Name, @ImageURL, @BeginDate, @EndDate, @Prizepool)
+				VALUES(@Id, @LeagueName, @SeriesFullName, @Name, @ImageURL, @BeginAt, @EndAt, @Prizepool)
 			end
 		else
 			begin
-				exec UpdateTournament @Id, @ImageURL, @BeginDate, @EndDate, @Prizepool
+				exec UpdateTournament @Id, @ImageURL, @BeginAt, @EndAt, @Prizepool
 			end
 	commit
 RETURN 0

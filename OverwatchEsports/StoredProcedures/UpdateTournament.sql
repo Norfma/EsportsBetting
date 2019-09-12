@@ -1,13 +1,13 @@
 ﻿CREATE PROCEDURE [dbo].[UpdateTournament]
 	@Id int,
 	@ImageURL nvarchar(max) null,
-	@BeginDate datetime2 null,
-	@EndDate datetime2 null,
+	@BeginAt datetime2 null,
+	@EndAt datetime2 null,
 	@Prizepool int null
 AS
 	begin transaction
 	set transaction isolation level read committed
-		UPDATE Tournament SET ImageURL = @ImageURL, BeginDate = @BeginDate, EndDate = @EndDate, 
+		UPDATE Tournament SET ImageURL = @ImageURL, BeginAt = @BeginAt, EndAt = @EndAt, 
 		Prizepool = @Prizepool where Id = @Id
 	commit
 RETURN 0

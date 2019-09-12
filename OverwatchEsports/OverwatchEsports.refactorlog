@@ -147,4 +147,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ImageURL" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="757c4a14-e5c7-4d72-a6ef-48e7b9524ff7" ChangeDateTime="09/12/2019 11:36:00">
+    <Property Name="ElementName" Value="[dbo].[Tournament].[BeginDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tournament]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BeginAt" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="10ce2d4a-6f0b-462c-b108-611b447fae13" ChangeDateTime="09/12/2019 11:36:21">
+    <Property Name="ElementName" Value="[dbo].[Tournament].[EndDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tournament]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EndAt" />
+  </Operation>
 </Operations>
