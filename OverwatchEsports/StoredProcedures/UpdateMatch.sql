@@ -7,8 +7,9 @@
 	@MatchType nvarchar(50) null,
 	@NumberOfGames int null
 AS
-begin transaction
-set transaction isolation level read committed
-	UPDATE Match SET BeginAt = @BeginAt, EndAt = @EndAt, Draw = @Draw, Forfeit = @Forfeit,
-	MatchType = @MatchType, NumberOfGames = @NumberOfGames where Id = @Id
+	begin transaction
+	set transaction isolation level read committed
+		UPDATE Match SET BeginAt = @BeginAt, EndAt = @EndAt, Draw = @Draw, Forfeit = @Forfeit,
+		MatchType = @MatchType, NumberOfGames = @NumberOfGames where Id = @Id
+	commit
 RETURN 0
