@@ -55,8 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALBase\DALBase.csproj">
-      <Project>{988A8908-969F-4F98-B964-4B85AF0F1315}</Project>
+      <Project>{988a8908-969f-4f98-b964-4b85af0f1315}</Project>
       <Name>DALBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PandascoreDAL\PandascoreDAL.csproj">
+      <Project>{8c20c558-0c8e-4c34-8dac-8b85cb699ce8}</Project>
+      <Name>PandascoreDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\PandascoreUtils\PandascoreUtils.csproj">
       <Project>{37304521-3556-4442-b51c-4c498fe81301}</Project>

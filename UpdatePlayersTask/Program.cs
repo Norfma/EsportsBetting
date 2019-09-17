@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using PandascoreUtils;
 using Newtonsoft.Json;
 using DALBase.Data;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using PandascoreDAL;
+using System.Text.RegularExpressions;
 
 namespace UpdatePlayersTask
 {
@@ -14,13 +17,26 @@ namespace UpdatePlayersTask
     {
         static void Main(string[] args)
         {
+            Regex reg = new Regex(@"<(\S*)>");
             HttpClient client = new HttpClient();
-            client.BaseAddress = PandaScoreUtils.PandaBaseAddress;
+            string Url = PandaScoreUtils.PandaBaseAddress + $"players?token={PandaScoreUtils.Token}&{PandaScoreUtils.MaxPerPage}";
+            List<PlayerApi> players = new List<PlayerApi>();
 
-            HttpResponseMessage msg = client.GetAsync($"players?token={PandaScoreUtils.Token}").Result;
-            List<PlayerApi> o = JsonConvert.DeserializeObject<List<PlayerApi>>(msg.Content.ReadAsStringAsync().Result);
+            do
+            {
+                HttpResponseMessage msg = client.GetAsync(Url).Result;
+                players.AddRange(JsonConvert.DeserializeObject<List<PlayerApi>>(msg.Content.ReadAsStringAsync().Result));
 
-            Console.ReadLine();
+                IEnumerable<string> links;
+                msg.Headers.TryGetValues("Link", out links);
+
+                Url = links.First().Split(',').FirstOrDefault(s => s.Contains("rel=\"next\""));
+                if (Url != null)
+                {
+                    Url = reg.Match(Url).Groups[1].Value;
+                }
+            } while (Url != null);
+          
         }
     }
 
