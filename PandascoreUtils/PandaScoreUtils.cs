@@ -8,7 +8,8 @@ namespace PandascoreUtils
 {
     public static class PandaScoreUtils
     {
-        public static Uri PandaBaseAddress = new Uri(@"https://api.pandascore.co/ow/}");
-        public static string Token = "vMVq6dhpbhBhTrWUs3GcBVM64n9_WWrAbXOx8NOm_7rsgzN_gVk";
+        public const string PandaBaseAddress = @"https://api.pandascore.co/ow/";
+        public const string Token = "vMVq6dhpbhBhTrWUs3GcBVM64n9_WWrAbXOx8NOm_7rsgzN_gVk";
+        public const string MaxPerPage = "per_page=100";
     }
 }
