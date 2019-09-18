@@ -18,7 +18,7 @@ namespace PandascoreDAL.Service
 
             cmd.AddParameter("@Id", entity.Id);
             cmd.AddParameter("@Name", entity.Name);
-            cmd.AddParameter("@TeamId", entity.Acronym);
+            cmd.AddParameter("@Acronym", entity.Acronym);
             cmd.AddParameter("@ImageURL", entity.ImageURL);
 
             return connection.ExecuteNonQuery(cmd) > 0;
