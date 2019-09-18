@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PandascoreDAL.Service
 {
-    class TeamTournamentService : IUpdateService<TeamTournamentRegister>
+    public class TeamTournamentService : IUpdateService<TeamTournamentRegister>
     {
         public bool Update(TeamTournamentRegister entity)
         {

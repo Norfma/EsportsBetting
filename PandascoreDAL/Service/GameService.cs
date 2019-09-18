@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PandascoreDAL.Service
 {
-    class GameService : IUpdateService<Game>
+    public class GameService : IUpdateService<Game>
     {
         public bool Update(Game entity)
         {

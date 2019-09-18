@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PandascoreDAL.Service
 {
-    class MapService : IUpdateService<Map>
+    public class MapService : IUpdateService<Map>
     {
         public bool Update(Map entity)
         {
