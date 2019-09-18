@@ -14,7 +14,7 @@ namespace PandascoreDAL.Service
         public bool Update(Match entity)
         {
             Connection connection = new Connection(DBConfig.CONNSTRING);
-            Command cmd = new Command("InsertPlayer", true);
+            Command cmd = new Command("InsertMatch", true);
 
             cmd.AddParameter("@Id", entity.Id);
             cmd.AddParameter("@Team1Id", entity.Team1Id);

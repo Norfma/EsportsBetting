@@ -14,7 +14,7 @@ namespace PandascoreDAL.Service
         public bool Update(Map entity)
         {
             Connection connection = new Connection(DBConfig.CONNSTRING);
-            Command cmd = new Command("InsertPlayer", true);
+            Command cmd = new Command("InsertMap", true);
 
             cmd.AddParameter("@Id", entity.Id);
             cmd.AddParameter("@Name", entity.Name);
