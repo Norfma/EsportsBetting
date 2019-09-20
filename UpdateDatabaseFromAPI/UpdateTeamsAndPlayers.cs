@@ -1,4 +1,5 @@
 ﻿using DALBase.Data;
+using MyTools;
 using Newtonsoft.Json;
 using PandascoreDAL.Service;
 using PandascoreUtils;
@@ -7,15 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using MyTools;
+using UpdateDatabaseFromAPI.DataAPI;
 
-namespace UpdateTeamsTask
+namespace UpdateDatabaseFromAPI
 {
-    class Program
+    public static class UpdateTeamsAndPlayers
     {
-        static void Main(string[] args)
+        public static void Update()
         {
             HttpClient client = new HttpClient();
             string Url = PandaScoreUtils.PandaBaseAddress + $"teams?token={PandaScoreUtils.Token}&{PandaScoreUtils.MaxPerPage}";
@@ -59,22 +59,4 @@ namespace UpdateTeamsTask
             }
         }
     }
-
-    class TeamApi
-    {
-        public string Acronym { get; set; }
-        public int Id { get; set; }
-        public string ImageURL { get; set; }
-        public string Name { get; set; }
-        public List<PlayerApi> Players { get; set; }
-    }
-
-    public class PlayerApi
-    {
-        public int Id { get; set; }
-        [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
-        public string Name { get; set; }
-    }
 }
-
