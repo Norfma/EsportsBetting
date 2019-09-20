@@ -7,5 +7,5 @@
     [ImageURL] NVARCHAR(MAX) NULL, 
     [BeginAt] DATETIME2 NULL, 
     [EndAt] DATETIME2 NULL, 
-    [Prizepool] INT NULL
+    [Prizepool] NVARCHAR(50) NULL
 )

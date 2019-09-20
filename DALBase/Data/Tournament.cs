@@ -14,8 +14,8 @@ namespace DALBase.Data
         public string SeriesFullName { get; set; }
         public string Name { get; set; }
         public string ImageURL { get; set; }
-        public DateTime BeginAt { get; set; }
-        public DateTime EndAt { get; set; }
-        public int Prizepool { get; set; }
+        public DateTime? BeginAt { get; set; }
+        public DateTime? EndAt { get; set; }
+        public string Prizepool { get; set; }
     }
 }

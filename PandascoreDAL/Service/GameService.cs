@@ -18,12 +18,11 @@ namespace PandascoreDAL.Service
 
             cmd.AddParameter("@Id", entity.Id);
             cmd.AddParameter("@MatchId", entity.MatchId);
-            cmd.AddParameter("@WinnderId", entity.WinnerId);
+            cmd.AddParameter("@WinnerId", entity.WinnerId);
             cmd.AddParameter("@BeginAt", entity.BeginAt);
             cmd.AddParameter("@EndAt", entity.EndAt);
-            cmd.AddParameter("@Forfeir", entity.Forfeit);
+            cmd.AddParameter("@Forfeit", entity.Forfeit);
             cmd.AddParameter("@Finished", entity.Finished);
-            cmd.AddParameter("@MapId", entity.MapId);
             cmd.AddParameter("@Length", entity.Length);
             cmd.AddParameter("@Position", entity.Position);
             cmd.AddParameter("@Status", entity.Status);

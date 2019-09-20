@@ -51,7 +51,6 @@
     <Compile Include="Service\MatchService.cs" />
     <Compile Include="Service\TournamentService.cs" />
     <Compile Include="Service\TeamService.cs" />
-    <Compile Include="Service\MapService.cs" />
     <Compile Include="Service\PlayerService.cs" />
   </ItemGroup>
   <ItemGroup>

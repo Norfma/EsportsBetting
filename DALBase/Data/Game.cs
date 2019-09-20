@@ -13,14 +13,13 @@ namespace DALBase.Data
     public class Game : IEntity<int>
     {
         public int Id { get; set; }
-        public int MatchId { get; set; }
-        public int WinnerId { get; set; }
-        public DateTime BeginAt { get; set; }
-        public DateTime EndAt { get; set; }
+        public int? MatchId { get; set; }
+        public int? WinnerId { get; set; }
+        public DateTime? BeginAt { get; set; }
+        public DateTime? EndAt { get; set; }
         public bool Forfeit { get; set; }
         public bool Finished { get; set; }
-        public int MapId { get; set; }
-        public int Length { get; set; }
+        public int? Length { get; set; }
         public int Position { get; set; }
         public string Status { get; set; }
     }

@@ -3,7 +3,7 @@
 	@ImageURL nvarchar(max) null,
 	@BeginAt datetime2 null,
 	@EndAt datetime2 null,
-	@Prizepool int null
+	@Prizepool NVARCHAR(50) null
 AS
 	begin transaction
 	set transaction isolation level read committed

@@ -6,7 +6,6 @@
     @EndAt DATETIME2 NULL, 
     @Forfeit BIT, 
     @Finished BIT, 
-    @MapId INT, 
     @Length INT NULL, 
     @Position INT, 
     @Status NVARCHAR(50)
@@ -15,12 +14,12 @@ AS
 	set transaction isolation level read committed
 		if (not Exists(Select * from Game where Id = @Id))
 			begin
-				INSERT INTO Game(Id, MatchId, WinnerId, BeginAt, EndAt, Forfeit, Finished, MapId, [Length], Position, [Status])
-				VALUES(@Id, @MatchId, @WinnerId, @BeginAt, @EndAt, @Forfeit, @Finished, @MapId, @Length, @Position, @Status)
+				INSERT INTO Game(Id, MatchId, WinnerId, BeginAt, EndAt, Forfeit, Finished, [Length], Position, [Status])
+				VALUES(@Id, @MatchId, @WinnerId, @BeginAt, @EndAt, @Forfeit, @Finished, @Length, @Position, @Status)
 			end
 		else
 			begin
-				exec UpdateGame @Id, @WinnerId, @EndAt, @Forfeit, @Finished, @MapId, @Length, @Status
+				exec UpdateGame @Id, @WinnerId, @EndAt, @Forfeit, @Finished, @Length, @Status
 			end	
 	commit
 RETURN 0

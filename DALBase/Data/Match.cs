@@ -16,11 +16,11 @@ namespace DALBase.Data
         public int Team1Id { get; set; }
         public int Team2Id { get; set; }
         public int TournamentId { get; set; }
-        public DateTime BeginAt { get; set; }
-        public DateTime EndAt { get; set; }
+        public DateTime? BeginAt { get; set; }
+        public DateTime? EndAt { get; set; }
         public bool Draw { get; set; }
         public bool Forfeit { get; set; }
         public string MatchType { get; set; }
-        public int NumberOfGames { get; set; }
+        public int? NumberOfGames { get; set; }
     }
 }
