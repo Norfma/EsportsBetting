@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MyTools;
 
 namespace UpdateTeamsTask
 {
@@ -16,7 +17,6 @@ namespace UpdateTeamsTask
     {
         static void Main(string[] args)
         {
-            Regex reg = new Regex(@"<(\S*)>");
             HttpClient client = new HttpClient();
             string Url = PandaScoreUtils.PandaBaseAddress + $"teams?token={PandaScoreUtils.Token}&{PandaScoreUtils.MaxPerPage}";
             List<TeamApi> teams = new List<TeamApi>();
@@ -26,14 +26,7 @@ namespace UpdateTeamsTask
                 HttpResponseMessage msg = client.GetAsync(Url).Result;
                 teams.AddRange(JsonConvert.DeserializeObject<List<TeamApi>>(msg.Content.ReadAsStringAsync().Result));
 
-                IEnumerable<string> links;
-                msg.Headers.TryGetValues("Link", out links);
-
-                Url = links.First().Split(',').FirstOrDefault(s => s.Contains("rel=\"next\""));
-                if (Url != null)
-                {
-                    Url = reg.Match(Url).Groups[1].Value;
-                }
+                Url = msg.Headers.GetNextURL();
             } while (Url != null);
 
             TeamService teamService = new TeamService();
@@ -79,6 +72,7 @@ namespace UpdateTeamsTask
     public class PlayerApi
     {
         public int Id { get; set; }
+        [JsonProperty("image_url")]
         public string ImageURL { get; set; }
         public string Name { get; set; }
     }

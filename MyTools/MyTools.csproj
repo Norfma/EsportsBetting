@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E5D374D9-1BD0-44BF-94B2-01390ACC5CD6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>UpdateTeamsTask</RootNamespace>
-    <AssemblyName>UpdateTeamsTask</AssemblyName>
+    <ProjectGuid>{644D8A2F-1A9E-426A-8FE8-81B21A777775}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyTools</RootNamespace>
+    <AssemblyName>MyTools</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,30 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="LinkUrlParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DALBase\DALBase.csproj">
-      <Project>{988a8908-969f-4f98-b964-4b85af0f1315}</Project>
-      <Name>DALBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyTools\MyTools.csproj">
-      <Project>{644d8a2f-1a9e-426a-8fe8-81b21a777775}</Project>
-      <Name>MyTools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PandascoreDAL\PandascoreDAL.csproj">
-      <Project>{8c20c558-0c8e-4c34-8dac-8b85cb699ce8}</Project>
-      <Name>PandascoreDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PandascoreUtils\PandascoreUtils.csproj">
-      <Project>{37304521-3556-4442-b51c-4c498fe81301}</Project>
-      <Name>PandascoreUtils</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
