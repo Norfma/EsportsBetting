@@ -161,4 +161,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EndAt" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="4a40ace2-ec74-413a-8917-24a5f6b24ca3" ChangeDateTime="10/01/2019 12:03:54">
+    <Property Name="ElementName" Value="[dbo].[Bet].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bc65630e-c1bf-4c57-8dfe-2fbd43077cf6" ChangeDateTime="10/01/2019 12:28:50">
+    <Property Name="ElementName" Value="[dbo].[Bet].[WinnerId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BettedWinner" />
+  </Operation>
 </Operations>
