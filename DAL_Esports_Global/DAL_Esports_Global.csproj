@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DBToolBox">
+      <HintPath>..\DALBase\DBToolBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +46,13 @@
   <ItemGroup>
     <Compile Include="DBConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BetService.cs" />
+    <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\MatchService.cs" />
+    <Compile Include="Services\PlayerService.cs" />
+    <Compile Include="Services\TeamService.cs" />
+    <Compile Include="Services\TournamentService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALBase\DALBase.csproj">
