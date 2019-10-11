@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="DBConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BetService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\MatchService.cs" />
     <Compile Include="Services\PlayerService.cs" />

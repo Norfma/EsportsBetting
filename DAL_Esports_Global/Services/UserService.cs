@@ -49,5 +49,26 @@ namespace DAL_Esports_Global.Services
         {
             throw new NotImplementedException();
         }
+
+        public bool AddBet(int userId, int matchId, int bettedWinner)
+        {
+            Connection connection = new Connection(DBConfig.CONNSTRING);
+            Command cmd = new Command("InsertBet", true);
+            cmd.AddParameter("userId", userId);
+            cmd.AddParameter("matchId", matchId);
+            cmd.AddParameter("bettedWinner", bettedWinner);
+
+            return connection.ExecuteNonQuery(cmd) > 0;
+        }
+
+        public bool DeleteBet(int userId, int matchId)
+        {
+            Connection connection = new Connection(DBConfig.CONNSTRING);
+            Command cmd = new Command("DeleteBet", true);
+            cmd.AddParameter("userId", userId);
+            cmd.AddParameter("matchId", matchId);
+
+            return connection.ExecuteNonQuery(cmd) > 0;
+        }
     }
 }
