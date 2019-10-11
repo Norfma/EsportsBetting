@@ -10,7 +10,7 @@ using DALBase;
 
 namespace DAL_Esports_Global.Services
 {
-    class UserService : IRepository<User, int>
+    public class UserService : IRepository<User, int>
     {
         public bool Delete(int id)
         {

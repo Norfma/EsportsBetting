@@ -10,7 +10,7 @@ using DBToolbox;
 
 namespace DAL_Esports_Global.Services
 {
-    class TeamService : IGetterService<Team, int>
+    public class TeamService : IGetterService<Team, int>
     {
         public IEnumerable<Team> GetAll()
         {
