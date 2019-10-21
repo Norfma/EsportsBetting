@@ -26,7 +26,13 @@ namespace DAL_Esports_Global.Services
             Command cmd = new Command("select * from v_Player where Id = @Id");
             cmd.AddParameter("Id", id);
 
-            return connection.ExecuteReader<Player>(cmd, (c) => c.MapToGeneric<Player>()).FirstOrDefault();
+            return connection.ExecuteReader<Player>(cmd, (c) => new Player()
+            {
+                Id = (int)c["Id"],
+                ImageURL = c["ImageURL"].ToString(),
+                Name = c["Name"].ToString(),
+                TeamId = (int)c["TeamId"]
+            }).FirstOrDefault();
         }
     }
 }
