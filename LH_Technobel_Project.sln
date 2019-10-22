@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandascoreUtils", "PandascoreUtils\PandascoreUtils.csproj", "{37304521-3556-4442-B51C-4C498FE81301}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateDatabaseFromAPI", "UpdateDatabaseFromAPI\UpdateDatabaseFromAPI.csproj", "{4E672F04-1F53-4E83-9E88-DD2C5E29AF8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{A08D78F1-1CF0-4DF9-ADD9-6D2CE6D0C527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP-Front", "ASP-Front\ASP-Front.csproj", "{1DA97AB3-22C3-4C04-88E0-BEE1D933A3E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{A08D78F1-1CF0-4DF9-ADD9-6D2CE6D0C527}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A08D78F1-1CF0-4DF9-ADD9-6D2CE6D0C527}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A08D78F1-1CF0-4DF9-ADD9-6D2CE6D0C527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA97AB3-22C3-4C04-88E0-BEE1D933A3E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA97AB3-22C3-4C04-88E0-BEE1D933A3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA97AB3-22C3-4C04-88E0-BEE1D933A3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA97AB3-22C3-4C04-88E0-BEE1D933A3E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
