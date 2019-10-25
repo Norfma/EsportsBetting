@@ -120,12 +120,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Attributes\LoggedOffOnly.cs" />
-    <Compile Include="Attributes\LoginRequired.cs" />
+    <Compile Include="Controllers\BetController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Infrastructure\Attributes\LoggedOffOnly.cs" />
+    <Compile Include="Infrastructure\Attributes\LoginRequired.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\HashService.cs" />
+    <Compile Include="Infrastructure\Mapper.cs" />
+    <Compile Include="Models\SessionUser.cs" />
+    <Compile Include="Infrastructure\UserSession.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserLoginForm.cs" />
+    <Compile Include="Models\ViewModels\User\UserRegisterForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,10 +173,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\LogOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Bet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -181,6 +195,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DALBase\DALBase.csproj">
+      <Project>{988a8908-969f-4f98-b964-4b85af0f1315}</Project>
+      <Name>DALBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL_Esports_Global\DAL_Esports_Global.csproj">
+      <Project>{8734F188-CCC3-47A5-A68A-8984EB2DAE00}</Project>
+      <Name>DAL_Esports_Global</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
