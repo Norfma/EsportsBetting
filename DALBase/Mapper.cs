@@ -23,5 +23,20 @@ namespace DALBase
 
             return (TEntity)instance;
         }
+
+        public static TEntity MapRecordToGeneric<TEntity>(this System.Data.IDataRecord bas) where TEntity : new()
+        {
+            Type targetType = typeof(TEntity);
+
+            PropertyInfo[] properties = targetType.GetProperties();
+
+            var instance = System.Activator.CreateInstance(targetType);
+            foreach (var property in properties)
+            {
+                property.SetValue(instance, bas[property.Name], null);
+            }
+
+            return (TEntity)instance;
+        }
     }
 }

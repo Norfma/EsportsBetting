@@ -22,7 +22,16 @@ namespace DAL_Esports_Global.Services
             Connection connection = new Connection(DBConfig.CONNSTRING);
             Command cmd = new Command("select * from v_User where Active = 1");
 
-            return connection.ExecuteReader<User>(cmd, (c) => c.MapToGeneric<User>());
+            return connection.ExecuteReader<User>(cmd, (c) => c.MapRecordToGeneric<User>());
+        }
+
+        public IEnumerable<User> GetByUsername(string username)
+        {
+            Connection connection = new Connection(DBConfig.CONNSTRING);
+            Command cmd = new Command("select * from v_User where Username like @Username and Active = 1");
+            cmd.AddParameter("Username", username);
+
+            return connection.ExecuteReader<User>(cmd, (c) => c.MapRecordToGeneric<User>());
         }
 
         public User Get(int id)
@@ -31,7 +40,7 @@ namespace DAL_Esports_Global.Services
             Command cmd = new Command("select * from v_User where id = @id and Active = 1");
             cmd.AddParameter("Id", id);
 
-            return connection.ExecuteReader<User>(cmd, (c) => c.MapToGeneric<User>()).FirstOrDefault();
+            return connection.ExecuteReader<User>(cmd, (c) => c.MapRecordToGeneric<User>()).FirstOrDefault();
         }
 
         public int Insert(User entity)
@@ -50,7 +59,7 @@ namespace DAL_Esports_Global.Services
             throw new NotImplementedException();
         }
 
-        public bool AddBet(int userId, int matchId, int bettedWinner)
+        public bool AddUserBet(int userId, int matchId, int bettedWinner)
         {
             Connection connection = new Connection(DBConfig.CONNSTRING);
             Command cmd = new Command("InsertBet", true);
@@ -61,7 +70,7 @@ namespace DAL_Esports_Global.Services
             return connection.ExecuteNonQuery(cmd) > 0;
         }
 
-        public bool DeleteBet(int userId, int matchId)
+        public bool DeleteUserBet(int userId, int matchId)
         {
             Connection connection = new Connection(DBConfig.CONNSTRING);
             Command cmd = new Command("DeleteBet", true);
@@ -69,6 +78,15 @@ namespace DAL_Esports_Global.Services
             cmd.AddParameter("matchId", matchId);
 
             return connection.ExecuteNonQuery(cmd) > 0;
+        }
+
+        public IEnumerable<Bet>GetUserBets(int userId)
+        {
+            Connection connection = new Connection(DBConfig.CONNSTRING);
+            Command cmd = new Command("select * from v_Bet where UserId = @userId");
+            cmd.AddParameter("UserId", userId);
+
+            return connection.ExecuteReader<Bet>(cmd, (c) => c.MapRecordToGeneric<Bet>());
         }
     }
 }

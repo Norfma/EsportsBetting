@@ -17,7 +17,7 @@ namespace DAL_Esports_Global.Services
             Connection connection = new Connection(DBConfig.CONNSTRING);
             Command cmd = new Command("select * from v_Tournament");
 
-            return connection.ExecuteReader<Tournament>(cmd, (c) => c.MapToGeneric<Tournament>());
+            return connection.ExecuteReader<Tournament>(cmd, (c) => c.MapRecordToGeneric<Tournament>());
         }
 
         public Tournament Get(int id)
@@ -26,7 +26,7 @@ namespace DAL_Esports_Global.Services
             Command cmd = new Command("select * from v_Tournament where Id = @Id");
             cmd.AddParameter("Id", id);
 
-            return connection.ExecuteReader<Tournament>(cmd, (c) => c.MapToGeneric<Tournament>()).FirstOrDefault();
+            return connection.ExecuteReader<Tournament>(cmd, (c) => c.MapRecordToGeneric<Tournament>()).FirstOrDefault();
         }
 
         public IEnumerable<Tournament>GetTournamentsOfTeam(int TeamId)
@@ -40,7 +40,7 @@ namespace DAL_Esports_Global.Services
                 );
             cmd.AddParameter("TeamId", TeamId);
 
-            return connection.ExecuteReader<Tournament>(cmd, (c) => c.MapToGeneric<Tournament>());
+            return connection.ExecuteReader<Tournament>(cmd, (c) => c.MapRecordToGeneric<Tournament>());
         }
     }
 }

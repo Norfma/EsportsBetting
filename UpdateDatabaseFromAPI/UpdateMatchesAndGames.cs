@@ -34,38 +34,43 @@ namespace UpdateDatabaseFromAPI
 
             foreach (MatchApi m in matches)
             {
-                DALBase.Data.Match match = new DALBase.Data.Match()
-                {
-                    BeginAt = m.BeginAt,
-                    Draw = m.Draw,
-                    EndAt = m.EndAt,
-                    Forfeit = m.Forfeit,
-                    Id = m.Id,
-                    MatchType = m.MatchType,
-                    NumberOfGames = m.NumberOfGames,
-                    Team1Id = m.Opponents[0].opponent.Id,
-                    Team2Id = m.Opponents[1].opponent.Id,
-                    TournamentId = m.TournamentId
-                };
-
-                if (matchService.Update(match))
-                {
-                    foreach (GameApi g in m.Games)
+                DALBase.Data.Match match;
+                if (m.Opponents.Length > 0)
+                { 
+                    match = new DALBase.Data.Match()
                     {
-                        Game game = new Game()
+                        BeginAt = m.BeginAt,
+                        Draw = m.Draw,
+                        EndAt = m.EndAt,
+                        Forfeit = m.Forfeit,
+                        Id = m.Id,
+                        MatchType = m.MatchType,
+                        NumberOfGames = m.NumberOfGames,
+                        Team1Id = m.Opponents[0].opponent.Id,
+                        Team2Id = m.Opponents[1].opponent.Id,
+                        TournamentId = m.TournamentId
+                    };
+                
+
+                    if (matchService.Update(match))
+                    {
+                        foreach (GameApi g in m.Games)
                         {
-                            Id = g.Id,
-                            Forfeit = g.Forfeit,
-                            BeginAt = g.BeginAt,
-                            EndAt = g.EndAt,
-                            Finished = g.Finished,
-                            Length = g.Length,
-                            Position = g.Position,
-                            Status = g.Status,
-                            WinnerId = g.Winner.Id,
-                            MatchId = m.Id
-                        };
-                        gameService.Update(game);
+                            Game game = new Game()
+                            {
+                                Id = g.Id,
+                                Forfeit = g.Forfeit,
+                                BeginAt = g.BeginAt,
+                                EndAt = g.EndAt,
+                                Finished = g.Finished,
+                                Length = g.Length,
+                                Position = g.Position,
+                                Status = g.Status,
+                                WinnerId = g.Winner.Id,
+                                MatchId = m.Id
+                            };
+                            gameService.Update(game);
+                        }
                     }
                 }
             }

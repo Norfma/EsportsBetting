@@ -17,7 +17,7 @@ namespace DAL_Esports_Global.Services
             Connection connection = new Connection(DBConfig.CONNSTRING);
             Command cmd = new Command("select * from v_Match");
 
-            return connection.ExecuteReader<Match>(cmd, (c) => c.MapToGeneric<Match>());
+            return connection.ExecuteReader<Match>(cmd, (c) => c.MapRecordToGeneric<Match>());
         }
 
         public Match Get(int id)
@@ -26,7 +26,7 @@ namespace DAL_Esports_Global.Services
             Command cmd = new Command("select * from v_Match where Id = @Id");
             cmd.AddParameter("Id", id);
 
-            return connection.ExecuteReader<Match>(cmd, (c) => c.MapToGeneric<Match>()).FirstOrDefault();
+            return connection.ExecuteReader<Match>(cmd, (c) => c.MapRecordToGeneric<Match>()).FirstOrDefault();
         }
     }
 }

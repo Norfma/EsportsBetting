@@ -17,7 +17,7 @@ namespace DAL_Esports_Global.Services
             Connection connection = new Connection(DBConfig.CONNSTRING);
             Command cmd = new Command("select * from v_Team");
 
-            return connection.ExecuteReader<Team>(cmd, (c) => c.MapToGeneric<Team>());
+            return connection.ExecuteReader<Team>(cmd, (c) => c.MapRecordToGeneric<Team>());
         }
 
         public Team Get(int id)
@@ -26,7 +26,7 @@ namespace DAL_Esports_Global.Services
             Command cmd = new Command("select * from v_Team where Id = @Id");
             cmd.AddParameter("Id", id);
 
-            return connection.ExecuteReader<Team>(cmd, (c) => c.MapToGeneric<Team>()).FirstOrDefault();
+            return connection.ExecuteReader<Team>(cmd, (c) => c.MapRecordToGeneric<Team>()).FirstOrDefault();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace DAL_Esports_Global.Services
             Connection connection = new Connection(DBConfig.CONNSTRING);
             Command cmd = new Command("select * from v_Game");
 
-            return connection.ExecuteReader<Game>(cmd, (c) => c.MapToGeneric<Game>());
+            return connection.ExecuteReader<Game>(cmd, (c) => c.MapRecordToGeneric<Game>());
         }
 
         public Game Get(int id)
@@ -26,7 +26,7 @@ namespace DAL_Esports_Global.Services
             Command cmd = new Command("select * from v_Game where Id = @Id");
             cmd.AddParameter("Id", id);
 
-            return connection.ExecuteReader<Game>(cmd, (c) => c.MapToGeneric<Game>()).FirstOrDefault();
+            return connection.ExecuteReader<Game>(cmd, (c) => c.MapRecordToGeneric<Game>()).FirstOrDefault();
         }
     }
 }
