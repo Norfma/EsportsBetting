@@ -1,5 +1,6 @@
 ﻿using ASP_Front.Attributes;
 using ASP_Front.Infrastructure;
+using ASP_Front.Models.ViewModels.Bet;
 using DAL_Esports_Global.Services;
 using DALBase.Data;
 using System;
@@ -26,10 +27,21 @@ namespace ASP_Front.Controllers
         [LoginRequired]
         public ActionResult Register()
         {
-            MatchService service = new MatchService();
-            service.GetAll();
+            BetRegisterForm form = new BetRegisterForm();
 
-            return View();
+            return View(form);
+        }
+
+        public ActionResult RegisterMatches(int id)
+        {
+            MatchForm form = new MatchForm(id);
+            return PartialView(form);
+        }
+
+        public ActionResult RegisterTeams(int id)
+        {
+            TeamForm form = new TeamForm(id);
+            return PartialView(form);
         }
 
     }
