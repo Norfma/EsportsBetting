@@ -15,7 +15,7 @@ namespace DAL_Esports_Global.Services
         public IEnumerable<Match> GetAll()
         {
             Connection connection = new Connection(DBConfig.CONNSTRING);
-            Command cmd = new Command("select * from v_Match");
+            Command cmd = new Command("select *, T1.Name as Team1Name, T2.Name as Team2Name from v_Match join Team as T1 on Team1Id = T1.Id join Team as T2 on Team2Id = T2.Id");
 
             return connection.ExecuteReader<Match>(cmd, (c) => c.MapRecordToGeneric<Match>());
         }
@@ -23,8 +23,10 @@ namespace DAL_Esports_Global.Services
         public Match Get(int id)
         {
             Connection connection = new Connection(DBConfig.CONNSTRING);
-            Command cmd = new Command("select * from v_Match where Id = @Id");
+            Command cmd = new Command("select *, T1.Name as Team1Name, T2.Name as Team2Name from v_Match join Team as T1 on Team1Id = T1.Id join Team as T2 on Team2Id = T2.Id where v_Match.Id = @Id");
             cmd.AddParameter("Id", id);
+
+            TeamService teamService = new TeamService();
 
             return connection.ExecuteReader<Match>(cmd, (c) => c.MapRecordToGeneric<Match>()).FirstOrDefault();
         }

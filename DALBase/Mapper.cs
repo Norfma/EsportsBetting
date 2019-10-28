@@ -33,7 +33,14 @@ namespace DALBase
             var instance = System.Activator.CreateInstance(targetType);
             foreach (var property in properties)
             {
-                property.SetValue(instance, bas[property.Name], null);
+                try
+                {
+                    property.SetValue(instance, bas[property.Name], null);
+                }
+                catch
+                {
+
+                }
             }
 
             return (TEntity)instance;

@@ -17,5 +17,10 @@ namespace DALBase.Data
         public DateTime? BeginAt { get; set; }
         public DateTime? EndAt { get; set; }
         public string Prizepool { get; set; }
+
+        public string GetConcatName()
+        {
+            return LeagueName + " " + SeriesFullName + " " + Name;
+        }
     }
 }

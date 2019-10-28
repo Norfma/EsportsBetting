@@ -22,5 +22,7 @@ namespace DALBase.Data
         public bool Forfeit { get; set; }
         public string MatchType { get; set; }
         public int? NumberOfGames { get; set; }
+        public string Team1Name { get; set; }
+        public string Team2Name { get; set; }
     }
 }
