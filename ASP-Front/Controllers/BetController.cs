@@ -32,16 +32,30 @@ namespace ASP_Front.Controllers
             return View(form);
         }
 
+        [LoginRequired]
         public ActionResult RegisterMatches(int id)
         {
             MatchForm form = new MatchForm(id);
             return PartialView(form);
         }
 
+        [LoginRequired]
         public ActionResult RegisterTeams(int id)
         {
             TeamForm form = new TeamForm(id);
             return PartialView(form);
+        }
+
+        [LoginRequired]
+        [HttpPost]
+        public ActionResult Register(BetRegisterForm form)
+        {
+            if (ModelState.IsValid && form.SaveToDB())
+            {
+                return RedirectToAction("Details", "User", new { username = UserSession.User.UserName });
+            }
+            else
+                return View(form);
         }
 
     }

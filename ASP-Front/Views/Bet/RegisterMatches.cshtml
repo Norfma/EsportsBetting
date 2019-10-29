@@ -3,10 +3,8 @@
 <select name="MatchId" id="matchesSelect">
     @foreach (var match in Model.matches)
     {
+        <option></option>
         <option value="@match.Id">@match.Team1Name vs @match.Team2Name</option>
     }
 </select>
-
-<div class="form-group" id="teams"></div>
-
 

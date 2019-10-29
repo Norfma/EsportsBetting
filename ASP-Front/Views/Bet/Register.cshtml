@@ -16,7 +16,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            <select name="TournamendId" id="select">
+            <select name="TournamentId" id="select">
+                <option></option>
                 @foreach (var tournament in Model._displayTournaments)
                 {
                     <option data-url="@tournament.ImageURL" value="@tournament.Id">@tournament.GetConcatName()</option>
@@ -24,19 +25,19 @@
             </select>
         </div>
 
-        <div id="matches" class="form-group">
+        <div id="matches" class="form-group"></div>
 
-        </div>
+        <div id="teams" class="form-group"></div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" id="send" />
+                <input type="submit" value="Create" class="btn btn-default" id="send" disabled="disabled" />
             </div>
         </div>
     </div>
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "Details")
     </div>
 }
 
@@ -46,84 +47,99 @@
     <script>
         $(document).ready(function () {
 
+            
+
             function format(state) {
-                return "<img style='height: 25px' src='" + $(state.element).data('url') + "'>" + state.text;
+                if ($(state.element).data('url') !== undefined) {
+                    return "<img style='height: 25px' src='" + $(state.element).data('url') + "'>" + state.text;
+                }
+                else {
+                    return state.text;
+                }
             }
 
             $('#select').select2({
+                placeholder: "Please select a tournament",
                 templateResult: format,
                 templateSelection: format,
                 escapeMarkup: (m) => m
             });
 
+            let btn = document.getElementById("send");
+            let matches = document.getElementById("matches");
+            let teams = document.getElementById("teams");
 
-        let matches = document.getElementById("matches");
+            $('#select').on("select2:select", function (event) {
+                btn.toggleAttribute("disabled", true);
+                teams.innerHTML = "";
+                // requete ajax avec jquery
+                let val = $(this).val();
+                if (val === undefined) return;
 
-        $('#select').on("select2:select", function (event) {
+                $.ajax({
+                    //url que l'on veut contacter
+                    url: "@Url.Action("RegisterMatches","Bet", new {id = "[id]" })".replace("[id]", val),
+                    //verbe http que l'on utiliser,
+                    method: "GET",
+                    //type de données que l'on va recevoir
+                    dataType: "HTML",
+                    //la methode qui va être éxécutée en cas de success
+                    success: function (data) {
+                        matches.innerHTML = data;
+                        function format2(state) {
+                            return state.text;
+                        }
 
-            // requete ajax avec jquery
-            let val = $(this).val();
-            if (val === undefined) return;
-            
-            $.ajax({
-                //url que l'on veut contacter
-                url: "@Url.Action("RegisterMatches","Bet", new {id = "[id]" })".replace("[id]", val),
-                //verbe http que l'on utiliser,
-                method: "GET",
-                //type de données que l'on va recevoir
-                dataType: "HTML",
-                //la methode qui va être éxécutée en cas de success
-                success: function (data) {
-                    matches.innerHTML = data;
-                    function format2(state) {
-                        return state.text;
-                    }
-
-                    $('#matchesSelect').select2({
-                        templateResult: format2,
-                        templateSelection: format2,
-                        escapeMarkup: (m) => m
-                    });
-
-                    let teams = document.getElementById("teams");
-
-                    $('#matchesSelect').on("select2:select", function (event) {
-
-                        // requete ajax avec jquery
-                        let val = $(this).val();
-                        if (val === undefined) return;
-
-                        $.ajax({
-                            //url que l'on veut contacter
-                            url: "@Url.Action("RegisterTeams","Bet", new {id = "[id]" })".replace("[id]", val),
-                            //verbe http que l'on utiliser,
-                            method: "GET",
-                            //type de données que l'on va recevoir
-                            dataType: "HTML",
-                            //la methode qui va être éxécutée en cas de success
-                            success: function (data) {
-                                teams.innerHTML = data;
-
-                                $('#teamsSelect').select2({
-                                    templateResult: format,
-                                    templateSelection: format,
-                                    escapeMarkup: (m) => m
-                                });
-                            },
-                            //la methode qui etre executée en cas d'echec
-                            error: function (error) {
-                                console.log(error);
-                            }
+                        $('#matchesSelect').select2({
+                            placeholder: "Please select a match",
+                            templateResult: format2,
+                            templateSelection: format2,
+                            escapeMarkup: (m) => m
                         });
-                    });
-                },
-                //la methode qui etre executée en cas d'echec
-                error: function (error) {
-                    console.log(error);
-                }
+
+
+                        $('#matchesSelect').on("select2:select", function (event) {
+                            
+                            // requete ajax avec jquery
+                            let val = $(this).val();
+                            if (val === undefined) return;
+
+                            $.ajax({
+                                //url que l'on veut contacter
+                                url: "@Url.Action("RegisterTeams","Bet", new {id = "[id]" })".replace("[id]", val),
+                                //verbe http que l'on utiliser,
+                                method: "GET",
+                                //type de données que l'on va recevoir
+                                dataType: "HTML",
+                                //la methode qui va être éxécutée en cas de success
+                                success: function (data) {
+                                    teams.innerHTML = data;
+
+                                    $('#teamsSelect').select2({
+                                        placeholder: "Please select a team",
+                                        templateResult: format,
+                                        templateSelection: format,
+                                        escapeMarkup: (m) => m
+                                    });
+
+                                    $('#teamsSelect').on("change", function (event) {
+                                        btn.toggleAttribute("disabled", false);
+                                    });
+                                },
+                                //la methode qui etre executée en cas d'echec
+                                error: function (error) {
+                                    console.log(error);
+                                }
+                            });
+                        });
+                    },
+                    //la methode qui etre executée en cas d'echec
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
             });
         });
-    });
     </script>
 }
 

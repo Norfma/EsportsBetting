@@ -72,7 +72,7 @@ namespace ASP_Front.Controllers
         public ActionResult LogOut()
         {
             HttpContext.Session.Abandon();
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿@model ASP_Front.Models.ViewModels.Bet.TeamForm
 
-<select name="TeamId" id="teamsSelect">
+<select name="BettedWinnerId" id="teamsSelect">
     @foreach (var team in Model.teams)
     {
+        <option></option>
         <option data-url="@team.ImageURL" value="@team.Id">@team.Name</option>
     }
 </select>
