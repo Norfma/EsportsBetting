@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 using DALBase.Interfaces;
 namespace DALBase.Data
 {
-    public class Bet:IEntity<int[]>
+    public class Bet
     {
-        public int[] Id { get; set; }
-
-        public int UserId { get => Id[0]; set => Id[0] = value; }
-        public int MatchId { get => Id[0]; set => Id[0] = value; }
+        public int UserId { get; set; }
+        public int MatchId { get; set; }
         public int BettedWinner { get; set; }
     }
 }
