@@ -17,11 +17,7 @@ namespace ASP_Front.Controllers
         [LoginRequired]
         public ActionResult Index()
         {
-            UserService service = new UserService();
-
-            IEnumerable<Bet> bets = service.GetUserBets(UserSession.User.UserID);
-
-            return View();
+            return RedirectToAction("Details", "User", new { id = UserSession.User.UserID });
         }
 
         [LoginRequired]

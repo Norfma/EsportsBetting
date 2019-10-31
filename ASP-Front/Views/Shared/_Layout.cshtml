@@ -26,9 +26,15 @@
                 </ul>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Login", "Login", "User",null, new { @style = "color:white !important" })</li>
-                        <li>@Html.ActionLink("Logout", "LogOut", "User",null, new { @style = "color:white !important" })</li>
-                        <li>@Html.ActionLink("My Account", "Details", "User",null, new { @style = "color:white !important" })</li>
+                        @if (HttpContext.Current.Session["User"] == null)
+                        {
+                            <li>@Html.ActionLink("Login", "Login", "User", null, new { @style = "color:white !important" })</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Logout", "LogOut", "User", null, new { @style = "color:white !important" })</li>
+                            <li>@Html.ActionLink("My Account", "Index", "User", new { @style = "color:white !important" })</li>
+                        }
                     </ul>
                 </div>
             </div>           

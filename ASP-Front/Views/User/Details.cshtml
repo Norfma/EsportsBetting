@@ -1,33 +1,20 @@
-﻿@model ASP_Front.Models.UserModel
+﻿@model ASP_Front.Models.ViewModels.User.UserBetsDetails
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>UserModel</h4>
+    <h2>@Model.Username</h2>
+    <br />
+    <h4>Current Global Score : @Model.UserScore</h4>
+
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
+        @foreach (var betdetails in Model.betDetails)
+        {
+            <dt style="width:100%; text-align:center; color:@(betdetails.isWon ? "green" : "red")">@betdetails.Team1Name : @betdetails.Team1Score | @betdetails.Team2Name : @betdetails.Team2Score</dt>
+        }
     </dl>
+    <br />
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
