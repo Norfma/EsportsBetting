@@ -30,5 +30,14 @@ namespace DAL_Esports_Global.Services
 
             return connection.ExecuteReader<Match>(cmd, (c) => c.MapRecordToGeneric<Match>()).FirstOrDefault();
         }
+
+        public IEnumerable<Game> GetGamesFromMatch(int matchId)
+        {
+            Connection connection = new Connection(DBConfig.CONNSTRING);
+            Command cmd = new Command("GetGamesFromMatch", true);
+            cmd.AddParameter("MatchId", matchId);
+
+            return connection.ExecuteReader<Game>(cmd, (c) => c.MapRecordToGeneric<Game>());
+        }
     }
 }
