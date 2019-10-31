@@ -93,6 +93,7 @@
     <Build Include="StoredProcedures\DeleteBet.sql" />
     <Build Include="StoredProcedures\InsertBet.sql" />
     <Build Include="StoredProcedures\GetGamesFromMatch.sql" />
+    <Build Include="StoredProcedures\GetAvailableMatchesFromTournament.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OverwatchEsports.refactorlog" />

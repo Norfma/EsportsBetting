@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "SearchUser";
+}
+
+<h2>Search for a specific user</h2>
+
+@using (Html.BeginForm("details","user",FormMethod.Get, null))
+{
+    <p>Username : </p> @Html.TextBox("username");
+}
+

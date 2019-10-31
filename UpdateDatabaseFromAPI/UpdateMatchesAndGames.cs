@@ -35,7 +35,7 @@ namespace UpdateDatabaseFromAPI
             foreach (MatchApi m in matches)
             {
                 DALBase.Data.Match match;
-                if (m.Opponents.Length > 0)
+                if (m.Opponents.Length >= 2)
                 { 
                     match = new DALBase.Data.Match()
                     {

@@ -16,7 +16,7 @@ namespace ASP_Front.Controllers
         [LoginRequired]
         public ActionResult Index()
         {
-            return RedirectToAction("details", new { username = UserSession.User.UserName });
+            return RedirectToAction("details");
         }
 
         // GET: Student
@@ -42,12 +42,32 @@ namespace ASP_Front.Controllers
                 return View(form);
         }
 
-        [LoginRequired]
+        public ActionResult SearchUser()
+        {
+            return View();
+        }
+
         public ActionResult Details(string username)
         {
-            UserBetsDetails betsDetails = new UserBetsDetails(username);
-
-            return View(betsDetails);
+            UserService userService = new UserService();
+            DALBase.Data.User user = null;
+            if (username != null)
+            {
+                 user = userService.GetByUsername(username).FirstOrDefault();
+            }
+            else if (UserSession.User != null)
+            {
+                user = userService.GetByUsername(UserSession.User.UserName).FirstOrDefault();
+            }
+            if (user != null)
+            {
+                UserBetsDetails betsDetails = new UserBetsDetails(user);
+                return View(betsDetails);
+            }
+            else
+            {
+                return RedirectToAction("NotFound", "Error", null);
+            }
         }
 
         [LoggedOffOnly]

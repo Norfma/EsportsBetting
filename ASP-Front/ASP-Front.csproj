@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BetController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Infrastructure\Attributes\LoggedOffOnly.cs" />
     <Compile Include="Infrastructure\Attributes\LoginRequired.cs" />
@@ -187,6 +188,8 @@
     <Content Include="Views\Bet\RegisterMatches.cshtml" />
     <Content Include="Views\Bet\RegisterTeams.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\User\SearchUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,11 +21,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", null, new { @style = "color:white !important" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", null, new { @style = "color:white !important" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @style = "color:white !important" })</li>
+                    <li>@Html.ActionLink("Create Prognostic", "Register", "Bet", null, new { @style = "color:white !important" })</li>
                 </ul>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @using (Html.BeginForm("Details", "User", FormMethod.Get, new {@style = "padding:15px" }))
+                            {
+                                @Html.TextBox("username", null, null, null)
+                            }
+                        </li>
                         @if (HttpContext.Current.Session["User"] == null)
                         {
                             <li>@Html.ActionLink("Login", "Login", "User", null, new { @style = "color:white !important" })</li>
@@ -33,7 +38,7 @@
                         else
                         {
                             <li>@Html.ActionLink("Logout", "LogOut", "User", null, new { @style = "color:white !important" })</li>
-                            <li>@Html.ActionLink("My Account", "Index", "User", new { @style = "color:white !important" })</li>
+                            <li>@Html.ActionLink("My Account", "Details", "User", null, new { @style = "color:white !important" })</li>
                         }
                     </ul>
                 </div>
@@ -44,7 +49,20 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Challenger Application</p>
+            <div class="navbar navbar-inverse navbar-fixed-bottom" style="background-color:rgb(20, 0, 59)">
+                <div class="container">
+                    <div class="navbar-header">
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home", "Index", "Home", null, new { @style = "color:white !important" })</li>
+                                <li>@Html.ActionLink("About", "About", "Home", null, new { @style = "color:white !important" })</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @style = "color:white !important" })</li>
+                                <li><p style="color:white; padding:15px">&copy; @DateTime.Now.Year - Challenger Application</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 

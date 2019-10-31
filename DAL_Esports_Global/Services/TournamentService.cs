@@ -42,5 +42,23 @@ namespace DAL_Esports_Global.Services
 
             return connection.ExecuteReader<Tournament>(cmd, (c) => c.MapRecordToGeneric<Tournament>());
         }
+
+        /// <summary>
+        /// Gets the number of available matches the user can bet on in a specific tournament.
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <param name="TournamentId"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public int GetNumberOfAvailableMatches(int UserId, int TournamentId, DateTime date)
+        {
+            Connection connection = new Connection(DBConfig.CONNSTRING);
+            Command cmd = new Command("select dbo.GetAvailableMatchesFromTournament(@UserId, @TournamentId, @Date) as counts");
+            cmd.AddParameter("UserId", UserId);
+            cmd.AddParameter("TournamentId", TournamentId);
+            cmd.AddParameter("Date", date);
+
+            return (int)connection.ExecuteScalar(cmd);
+        }
     }
 }

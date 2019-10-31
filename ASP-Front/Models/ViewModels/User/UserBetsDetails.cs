@@ -1,4 +1,5 @@
-﻿using ASP_Front.Models.ViewModels.Bet;
+﻿using ASP_Front.Infrastructure;
+using ASP_Front.Models.ViewModels.Bet;
 using DAL_Esports_Global.Services;
 using DALBase.Data;
 using System;
@@ -15,12 +16,11 @@ namespace ASP_Front.Models.ViewModels.User
         public List<BetDetails> betDetails;
         public int UserScore { get; set; }
 
-        public UserBetsDetails(string username)
+        public UserBetsDetails(DALBase.Data.User user)
         {
-            Username = username;
             UserService userService = new UserService();
-            DALBase.Data.User user = userService.GetByUsername(username).FirstOrDefault();
-
+            
+            Username = user.Username ;
             bets = userService.GetUserBets(user.Id).ToList();
 
             betDetails = new List<BetDetails>();

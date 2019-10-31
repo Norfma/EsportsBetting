@@ -52,5 +52,10 @@ namespace ASP_Front.Models.ViewModels.Bet
             UserService service = new UserService();
             return service.AddUserBet(UserSession.User.UserID, MatchId, BettedWinnerId);
         }
+
+        public int GetAvailableMatches(Tournament tournament)
+        {
+            return _tournamentService.GetNumberOfAvailableMatches(UserSession.User.UserID, tournament.Id, _FakeNow);
+        }
     }
 }
