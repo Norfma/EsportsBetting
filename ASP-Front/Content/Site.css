@@ -23,3 +23,7 @@ textarea {
     width: 100%;
     max-width:450px;
 }
+
+.txt-white {
+    color : white !important;
+}
